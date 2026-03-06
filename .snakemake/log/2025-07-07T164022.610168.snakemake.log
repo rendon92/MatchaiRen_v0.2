@@ -1,0 +1,964 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Need to rerun job run_pipeline because of missing output required by all.
+Need to rerun job run_pipeline because of missing output required by all.
+Need to rerun job prepare_data because of missing output required by run_pipeline.
+Need to rerun job all because job run_pipeline has to be rerun.
+Need to rerun job all because job run_pipeline has to be rerun.
+Need to rerun job run_pipeline because job prepare_data has to be rerun.
+Need to rerun job run_pipeline because job prepare_data has to be rerun.
+results/Monocyte/forward/network_final.tsv results/Monocyte/forward/TF_expression.tsv: False 1
+results/Monocyte/reverse/network_final.tsv results/Monocyte/reverse/TF_expression.tsv: False 1
+results/Monocyte/peaks_within_degs.tsv results/Monocyte/docr_sequences_forward_lin.tsv results/Monocyte/docr_sequences_reverse_lin.tsv results/Monocyte/positive_genes.tsv results/Monocyte/negative_genes.tsv: True 0
+: False 2
+shared_storage_local_copies: True
+remote_exec: False
+Submitting maximum 100 job(s) over 1.0 second(s).
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+prepare_data        1
+run_pipeline        2
+total               4
+
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 1, '_job_count': 9223372036854775807}
+Ready jobs: 1
+Select jobs to execute...
+Selecting jobs to run using greedy solver.
+Selected jobs: 1
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Execute 1 jobs...
+[Mon Jul  7 16:40:22 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Homo_sapiens.gtf, reference/orthologs/human_human.tsv, reference/orthologs/human_mouse.tsv, reference/genomes/Homo_sapiens.fa
+    output: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/positive_genes.tsv
+    wildcards: celltype=Monocyte
+    resources: tmpdir=/tmp
+Shell command: 
+    echo 'Running prepare_data for Monocyte'
+    bash prepare_data.bash data/degs/all_degs.tsv data/docrs/all_docrs.tsv Monocyte Homo_sapiens reference/orthologs/human_human.tsv reference/orthologs/human_mouse.tsv reference/genomes/Homo_sapiens.fa reference/annotations/Homo_sapiens.gtf
+    
+Waiting for running jobs to complete.
+[Mon Jul  7 16:41:08 2025]
+Finished jobid: 2 (Rule: prepare_data)
+1 of 4 steps (25%) done
+results/Monocyte/forward/network_final.tsv results/Monocyte/forward/TF_expression.tsv: True 0
+results/Monocyte/reverse/network_final.tsv results/Monocyte/reverse/TF_expression.tsv: True 0
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 1, '_job_count': 100}
+Ready jobs: 2
+Select jobs to execute...
+Selected jobs: 1
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Execute 1 jobs...
+[Mon Jul  7 16:41:08 2025]
+localrule run_pipeline:
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/forward/network_final.tsv, results/Monocyte/forward/TF_expression.tsv
+    jobid: 1
+    reason: Missing output files: results/Monocyte/forward/network_final.tsv, results/Monocyte/forward/TF_expression.tsv; Input files updated by another job: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/positive_genes.tsv
+    wildcards: celltype=Monocyte, strand=forward
+    resources: tmpdir=/tmp
+Shell command: 
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv
+    
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Select jobs to execute...
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Waiting for running jobs to complete.
+Full Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 425, in run_wrapper
+    run(
+  File "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 87, in __rule_run_pipeline
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/shell.py", line 358, in __new__
+    raise sp.CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+
+Full Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 425, in run_wrapper
+    run(
+  File "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 87, in __rule_run_pipeline
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/shell.py", line 358, in __new__
+    raise sp.CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 247, in cached_or_run
+    run_func(*args)
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 461, in run_wrapper
+    raise RuleException(
+snakemake.exceptions.RuleException: CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 47:
+Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+
+RuleException:
+CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 47:
+Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+[Mon Jul  7 16:43:09 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 1
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/forward/network_final.tsv, results/Monocyte/forward/TF_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv
+    
+        (command exited with non-zero exit code)
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 1, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 1
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 0, '_job_count': 100}
+Execute 1 jobs...
+[Mon Jul  7 16:43:09 2025]
+localrule run_pipeline:
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/reverse/network_final.tsv, results/Monocyte/reverse/TF_expression.tsv
+    jobid: 3
+    reason: Missing output files: results/Monocyte/reverse/network_final.tsv, results/Monocyte/reverse/TF_expression.tsv; Input files updated by another job: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv
+    wildcards: celltype=Monocyte, strand=reverse
+    resources: tmpdir=/tmp
+Shell command: 
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv
+    
+Waiting for running jobs to complete.
+Full Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 425, in run_wrapper
+    run(
+  File "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 87, in __rule_run_pipeline
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/shell.py", line 358, in __new__
+    raise sp.CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+
+Full Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 425, in run_wrapper
+    run(
+  File "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 87, in __rule_run_pipeline
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/shell.py", line 358, in __new__
+    raise sp.CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 247, in cached_or_run
+    run_func(*args)
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/executors/local.py", line 461, in run_wrapper
+    raise RuleException(
+snakemake.exceptions.RuleException: CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 47:
+Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+
+RuleException:
+CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 47:
+Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv' returned non-zero exit status 1.
+[Mon Jul  7 16:45:13 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 3
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/reverse/network_final.tsv, results/Monocyte/reverse/TF_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv
+    
+        (command exited with non-zero exit code)
+Exiting because a job execution failed. Look below for error messages
+[Mon Jul  7 16:45:13 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 1
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/forward/network_final.tsv, results/Monocyte/forward/TF_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for Monocyte strand forward'
+    bash run_motif_pipeline.sh forward Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv
+    
+        (command exited with non-zero exit code)
+[Mon Jul  7 16:45:13 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 3
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/reverse/network_final.tsv, results/Monocyte/reverse/TF_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for Monocyte strand reverse'
+    bash run_motif_pipeline.sh reverse Monocyte reference/orthologs/human_mouse.tsv reference/orthologs/human_human.tsv
+    
+        (command exited with non-zero exit code)
+Complete log(s): /data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/.snakemake/log/2025-07-07T164022.610168.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks
+Full Traceback (most recent call last):
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/cli.py", line 2153, in args_to_api
+    dag_api.execute_workflow(
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/api.py", line 603, in execute_workflow
+    workflow.execute(
+  File "/home/javi/anaconda3/envs/GRN_software/lib/python3.11/site-packages/snakemake/workflow.py", line 1451, in execute
+    raise WorkflowError("At least one job did not complete successfully.")
+snakemake_interface_common.exceptions.WorkflowError: At least one job did not complete successfully.
+
+WorkflowError:
+At least one job did not complete successfully.

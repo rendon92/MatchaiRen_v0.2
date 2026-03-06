@@ -1,0 +1,61 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        1
+prepare_data           1
+run_pipeline           2
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Jul  8 18:34:42 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Homo_sapiens.gtf, reference/orthologs/human_human.tsv, reference/orthologs/human_mouse.tsv, reference/genomes/Homo_sapiens.fa
+    output: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/peaks_within_degs.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=Monocyte
+    resources: tmpdir=/tmp
+[Tue Jul  8 18:35:29 2025]
+Finished jobid: 2 (Rule: prepare_data)
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Jul  8 18:35:29 2025]
+localrule run_pipeline:
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/forward/network_final.tsv, results/Monocyte/forward/TF_expression.tsv
+    jobid: 1
+    reason: Missing output files: results/Monocyte/forward/network_final.tsv, results/Monocyte/forward/TF_expression.tsv; Input files updated by another job: results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/peaks_within_degs.tsv, results/Monocyte/positive_genes.tsv
+    wildcards: celltype=Monocyte, strand=forward
+    resources: tmpdir=/tmp
+[Tue Jul  8 18:35:29 2025]
+localrule run_pipeline:
+    input: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Monocyte/reverse/network_final.tsv, results/Monocyte/reverse/TF_expression.tsv
+    jobid: 3
+    reason: Missing output files: results/Monocyte/reverse/network_final.tsv, results/Monocyte/reverse/TF_expression.tsv; Input files updated by another job: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=Monocyte, strand=reverse
+    resources: tmpdir=/tmp
+[Tue Jul  8 18:38:10 2025]
+Finished jobid: 3 (Rule: run_pipeline)
+2 of 5 steps (40%) done
+[Tue Jul  8 18:38:11 2025]
+Finished jobid: 1 (Rule: run_pipeline)
+3 of 5 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+RuleException in rule post_processing in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 53:
+AttributeError: 'InputFiles' object has no attribute 'fwd_gene_expr', when formatting the following:
+
+    echo 'Ejecutando post-procesamiento para {wildcards.celltype}'
+    bash run_post_pipeline.sh       {input.fwd_gene_expr}       {input.rev_gene_expr}       {input.fwd_tf_expr}       {input.rev_tf_expr}       {wildcards.celltype}
+    

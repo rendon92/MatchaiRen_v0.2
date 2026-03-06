@@ -1,0 +1,334 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        6
+prepare_data           6
+run_pipeline          12
+total                 25
+
+Select jobs to execute...
+Execute 4 jobs...
+[Wed Oct  8 18:47:23 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv, results/stalk/negative_genes.tsv
+    jobid: 10
+    reason: Set of input files has changed since last execution
+    wildcards: celltype=stalk
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:47:23 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/placode/peaks_within_degs.tsv, results/placode/docr_sequences_forward_lin.tsv, results/placode/docr_sequences_reverse_lin.tsv, results/placode/positive_genes.tsv, results/placode/negative_genes.tsv
+    jobid: 12
+    reason: Set of input files has changed since last execution
+    wildcards: celltype=placode
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:47:23 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/retina/peaks_within_degs.tsv, results/retina/docr_sequences_forward_lin.tsv, results/retina/docr_sequences_reverse_lin.tsv, results/retina/positive_genes.tsv, results/retina/negative_genes.tsv
+    jobid: 2
+    reason: Set of input files has changed since last execution
+    wildcards: celltype=retina
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:47:23 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/telencephalon/peaks_within_degs.tsv, results/telencephalon/docr_sequences_forward_lin.tsv, results/telencephalon/docr_sequences_reverse_lin.tsv, results/telencephalon/positive_genes.tsv, results/telencephalon/negative_genes.tsv
+    jobid: 8
+    reason: Set of input files has changed since last execution
+    wildcards: celltype=telencephalon
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:47:25 2025]
+Finished jobid: 10 (Rule: prepare_data)
+1 of 25 steps (4%) done
+Execute 1 jobs...
+[Wed Oct  8 18:47:25 2025]
+localrule run_pipeline:
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/forward/network_final.tsv, results/stalk/forward/TF_expression.tsv, results/stalk/forward/gene_expression.tsv
+    jobid: 9
+    reason: Input files updated by another job: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/positive_genes.tsv
+    wildcards: celltype=stalk, strand=forward
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:47:27 2025]
+Finished jobid: 12 (Rule: prepare_data)
+2 of 25 steps (8%) done
+Execute 1 jobs...
+[Wed Oct  8 18:47:27 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/diencephalon/peaks_within_degs.tsv, results/diencephalon/docr_sequences_forward_lin.tsv, results/diencephalon/docr_sequences_reverse_lin.tsv, results/diencephalon/positive_genes.tsv, results/diencephalon/negative_genes.tsv
+    jobid: 6
+    reason: Set of input files has changed since last execution
+    wildcards: celltype=diencephalon
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:47:30 2025]
+Finished jobid: 8 (Rule: prepare_data)
+3 of 25 steps (12%) done
+Execute 1 jobs...
+[Wed Oct  8 18:47:30 2025]
+localrule run_pipeline:
+    input: results/placode/peaks_within_degs.tsv, results/placode/docr_sequences_forward_lin.tsv, results/placode/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/placode/forward/network_final.tsv, results/placode/forward/TF_expression.tsv, results/placode/forward/gene_expression.tsv
+    jobid: 11
+    reason: Input files updated by another job: results/placode/peaks_within_degs.tsv, results/placode/docr_sequences_forward_lin.tsv, results/placode/positive_genes.tsv
+    wildcards: celltype=placode, strand=forward
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:47:30 2025]
+Finished jobid: 6 (Rule: prepare_data)
+4 of 25 steps (16%) done
+Execute 1 jobs...
+[Wed Oct  8 18:47:30 2025]
+localrule run_pipeline:
+    input: results/telencephalon/peaks_within_degs.tsv, results/telencephalon/docr_sequences_forward_lin.tsv, results/telencephalon/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/telencephalon/forward/network_final.tsv, results/telencephalon/forward/TF_expression.tsv, results/telencephalon/forward/gene_expression.tsv
+    jobid: 7
+    reason: Input files updated by another job: results/telencephalon/docr_sequences_forward_lin.tsv, results/telencephalon/peaks_within_degs.tsv, results/telencephalon/positive_genes.tsv
+    wildcards: celltype=telencephalon, strand=forward
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:47:54 2025]
+Finished jobid: 2 (Rule: prepare_data)
+5 of 25 steps (20%) done
+Execute 1 jobs...
+[Wed Oct  8 18:47:54 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/negative_genes.tsv
+    jobid: 4
+    reason: Set of input files has changed since last execution
+    wildcards: celltype=RPE
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:47:56 2025]
+Finished jobid: 9 (Rule: run_pipeline)
+6 of 25 steps (24%) done
+Execute 1 jobs...
+[Wed Oct  8 18:47:56 2025]
+localrule run_pipeline:
+    input: results/placode/peaks_within_degs.tsv, results/placode/docr_sequences_reverse_lin.tsv, results/placode/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/placode/reverse/network_final.tsv, results/placode/reverse/TF_expression.tsv, results/placode/reverse/gene_expression.tsv
+    jobid: 18
+    reason: Input files updated by another job: results/placode/peaks_within_degs.tsv, results/placode/positive_genes.tsv, results/placode/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=placode, strand=reverse
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:48:01 2025]
+Finished jobid: 4 (Rule: prepare_data)
+7 of 25 steps (28%) done
+Execute 1 jobs...
+[Wed Oct  8 18:48:01 2025]
+localrule run_pipeline:
+    input: results/diencephalon/peaks_within_degs.tsv, results/diencephalon/docr_sequences_reverse_lin.tsv, results/diencephalon/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/diencephalon/reverse/network_final.tsv, results/diencephalon/reverse/TF_expression.tsv, results/diencephalon/reverse/gene_expression.tsv
+    jobid: 15
+    reason: Input files updated by another job: results/diencephalon/peaks_within_degs.tsv, results/diencephalon/positive_genes.tsv, results/diencephalon/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=diencephalon, strand=reverse
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:48:08 2025]
+Finished jobid: 11 (Rule: run_pipeline)
+8 of 25 steps (32%) done
+Execute 1 jobs...
+[Wed Oct  8 18:48:08 2025]
+localrule run_pipeline:
+    input: results/retina/peaks_within_degs.tsv, results/retina/docr_sequences_forward_lin.tsv, results/retina/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/retina/forward/network_final.tsv, results/retina/forward/TF_expression.tsv, results/retina/forward/gene_expression.tsv
+    jobid: 1
+    reason: Input files updated by another job: results/retina/docr_sequences_forward_lin.tsv, results/retina/positive_genes.tsv, results/retina/peaks_within_degs.tsv
+    wildcards: celltype=retina, strand=forward
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:48:39 2025]
+Finished jobid: 18 (Rule: run_pipeline)
+9 of 25 steps (36%) done
+Execute 1 jobs...
+[Wed Oct  8 18:48:39 2025]
+localrule run_pipeline:
+    input: results/retina/peaks_within_degs.tsv, results/retina/docr_sequences_reverse_lin.tsv, results/retina/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/retina/reverse/network_final.tsv, results/retina/reverse/TF_expression.tsv, results/retina/reverse/gene_expression.tsv
+    jobid: 13
+    reason: Input files updated by another job: results/retina/positive_genes.tsv, results/retina/peaks_within_degs.tsv, results/retina/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=retina, strand=reverse
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:48:42 2025]
+Finished jobid: 15 (Rule: run_pipeline)
+10 of 25 steps (40%) done
+Execute 1 jobs...
+[Wed Oct  8 18:48:42 2025]
+localrule run_pipeline:
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/reverse/network_final.tsv, results/stalk/reverse/TF_expression.tsv, results/stalk/reverse/gene_expression.tsv
+    jobid: 17
+    reason: Input files updated by another job: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv
+    wildcards: celltype=stalk, strand=reverse
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:49:07 2025]
+Finished jobid: 7 (Rule: run_pipeline)
+11 of 25 steps (44%) done
+Execute 1 jobs...
+[Wed Oct  8 18:49:07 2025]
+localrule run_pipeline:
+    input: results/diencephalon/peaks_within_degs.tsv, results/diencephalon/docr_sequences_forward_lin.tsv, results/diencephalon/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/diencephalon/forward/network_final.tsv, results/diencephalon/forward/TF_expression.tsv, results/diencephalon/forward/gene_expression.tsv
+    jobid: 5
+    reason: Input files updated by another job: results/diencephalon/peaks_within_degs.tsv, results/diencephalon/docr_sequences_forward_lin.tsv, results/diencephalon/positive_genes.tsv
+    wildcards: celltype=diencephalon, strand=forward
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:49:24 2025]
+Finished jobid: 17 (Rule: run_pipeline)
+12 of 25 steps (48%) done
+Execute 1 jobs...
+[Wed Oct  8 18:49:24 2025]
+localrule post_processing:
+    input: results/stalk/forward/network_final.tsv, results/stalk/reverse/network_final.tsv, results/stalk/forward/gene_expression.tsv, results/stalk/reverse/gene_expression.tsv, results/stalk/forward/TF_expression.tsv, results/stalk/reverse/TF_expression.tsv
+    output: results/stalk/network_scored.txt, results/stalk/filtered_network.txt
+    jobid: 23
+    reason: Input files updated by another job: results/stalk/forward/network_final.tsv, results/stalk/forward/TF_expression.tsv, results/stalk/reverse/gene_expression.tsv, results/stalk/reverse/TF_expression.tsv, results/stalk/forward/gene_expression.tsv, results/stalk/reverse/network_final.tsv
+    wildcards: celltype=stalk
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:49:24 2025]
+Finished jobid: 23 (Rule: post_processing)
+13 of 25 steps (52%) done
+Execute 1 jobs...
+[Wed Oct  8 18:49:24 2025]
+localrule post_processing:
+    input: results/placode/forward/network_final.tsv, results/placode/reverse/network_final.tsv, results/placode/forward/gene_expression.tsv, results/placode/reverse/gene_expression.tsv, results/placode/forward/TF_expression.tsv, results/placode/reverse/TF_expression.tsv
+    output: results/placode/network_scored.txt, results/placode/filtered_network.txt
+    jobid: 24
+    reason: Input files updated by another job: results/placode/forward/gene_expression.tsv, results/placode/reverse/TF_expression.tsv, results/placode/forward/network_final.tsv, results/placode/reverse/gene_expression.tsv, results/placode/reverse/network_final.tsv, results/placode/forward/TF_expression.tsv
+    wildcards: celltype=placode
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:49:25 2025]
+Finished jobid: 24 (Rule: post_processing)
+14 of 25 steps (56%) done
+Execute 1 jobs...
+[Wed Oct  8 18:49:25 2025]
+localrule run_pipeline:
+    input: results/telencephalon/peaks_within_degs.tsv, results/telencephalon/docr_sequences_reverse_lin.tsv, results/telencephalon/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/telencephalon/reverse/network_final.tsv, results/telencephalon/reverse/TF_expression.tsv, results/telencephalon/reverse/gene_expression.tsv
+    jobid: 16
+    reason: Input files updated by another job: results/telencephalon/docr_sequences_reverse_lin.tsv, results/telencephalon/peaks_within_degs.tsv, results/telencephalon/positive_genes.tsv
+    wildcards: celltype=telencephalon, strand=reverse
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:49:53 2025]
+Finished jobid: 5 (Rule: run_pipeline)
+15 of 25 steps (60%) done
+Execute 1 jobs...
+[Wed Oct  8 18:49:53 2025]
+localrule post_processing:
+    input: results/diencephalon/forward/network_final.tsv, results/diencephalon/reverse/network_final.tsv, results/diencephalon/forward/gene_expression.tsv, results/diencephalon/reverse/gene_expression.tsv, results/diencephalon/forward/TF_expression.tsv, results/diencephalon/reverse/TF_expression.tsv
+    output: results/diencephalon/network_scored.txt, results/diencephalon/filtered_network.txt
+    jobid: 21
+    reason: Input files updated by another job: results/diencephalon/forward/gene_expression.tsv, results/diencephalon/reverse/TF_expression.tsv, results/diencephalon/reverse/gene_expression.tsv, results/diencephalon/forward/TF_expression.tsv, results/diencephalon/forward/network_final.tsv, results/diencephalon/reverse/network_final.tsv
+    wildcards: celltype=diencephalon
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:49:54 2025]
+Finished jobid: 21 (Rule: post_processing)
+16 of 25 steps (64%) done
+Execute 1 jobs...
+[Wed Oct  8 18:49:54 2025]
+localrule run_pipeline:
+    input: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/RPE/reverse/network_final.tsv, results/RPE/reverse/TF_expression.tsv, results/RPE/reverse/gene_expression.tsv
+    jobid: 14
+    reason: Input files updated by another job: results/RPE/peaks_within_degs.tsv, results/RPE/positive_genes.tsv, results/RPE/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=RPE, strand=reverse
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  8 18:50:58 2025]
+Finished jobid: 14 (Rule: run_pipeline)
+17 of 25 steps (68%) done
+Execute 1 jobs...
+[Wed Oct  8 18:50:58 2025]
+localrule run_pipeline:
+    input: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/RPE/forward/network_final.tsv, results/RPE/forward/TF_expression.tsv, results/RPE/forward/gene_expression.tsv
+    jobid: 3
+    reason: Input files updated by another job: results/RPE/peaks_within_degs.tsv, results/RPE/positive_genes.tsv, results/RPE/docr_sequences_forward_lin.tsv
+    wildcards: celltype=RPE, strand=forward
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:51:13 2025]
+Finished jobid: 16 (Rule: run_pipeline)
+18 of 25 steps (72%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  8 18:51:13 2025]
+localrule post_processing:
+    input: results/telencephalon/forward/network_final.tsv, results/telencephalon/reverse/network_final.tsv, results/telencephalon/forward/gene_expression.tsv, results/telencephalon/reverse/gene_expression.tsv, results/telencephalon/forward/TF_expression.tsv, results/telencephalon/reverse/TF_expression.tsv
+    output: results/telencephalon/network_scored.txt, results/telencephalon/filtered_network.txt
+    jobid: 22
+    reason: Input files updated by another job: results/telencephalon/reverse/gene_expression.tsv, results/telencephalon/forward/network_final.tsv, results/telencephalon/forward/gene_expression.tsv, results/telencephalon/reverse/network_final.tsv, results/telencephalon/forward/TF_expression.tsv, results/telencephalon/reverse/TF_expression.tsv
+    wildcards: celltype=telencephalon
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:51:14 2025]
+Finished jobid: 22 (Rule: post_processing)
+19 of 25 steps (76%) done
+[Wed Oct  8 18:51:48 2025]
+Finished jobid: 1 (Rule: run_pipeline)
+20 of 25 steps (80%) done
+[Wed Oct  8 18:51:53 2025]
+Finished jobid: 3 (Rule: run_pipeline)
+21 of 25 steps (84%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  8 18:51:53 2025]
+localrule post_processing:
+    input: results/RPE/forward/network_final.tsv, results/RPE/reverse/network_final.tsv, results/RPE/forward/gene_expression.tsv, results/RPE/reverse/gene_expression.tsv, results/RPE/forward/TF_expression.tsv, results/RPE/reverse/TF_expression.tsv
+    output: results/RPE/network_scored.txt, results/RPE/filtered_network.txt
+    jobid: 20
+    reason: Input files updated by another job: results/RPE/reverse/gene_expression.tsv, results/RPE/reverse/TF_expression.tsv, results/RPE/forward/TF_expression.tsv, results/RPE/forward/network_final.tsv, results/RPE/reverse/network_final.tsv, results/RPE/forward/gene_expression.tsv
+    wildcards: celltype=RPE
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:51:53 2025]
+Finished jobid: 20 (Rule: post_processing)
+22 of 25 steps (88%) done
+[Wed Oct  8 18:52:06 2025]
+Finished jobid: 13 (Rule: run_pipeline)
+23 of 25 steps (92%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  8 18:52:06 2025]
+localrule post_processing:
+    input: results/retina/forward/network_final.tsv, results/retina/reverse/network_final.tsv, results/retina/forward/gene_expression.tsv, results/retina/reverse/gene_expression.tsv, results/retina/forward/TF_expression.tsv, results/retina/reverse/TF_expression.tsv
+    output: results/retina/network_scored.txt, results/retina/filtered_network.txt
+    jobid: 19
+    reason: Input files updated by another job: results/retina/reverse/gene_expression.tsv, results/retina/forward/gene_expression.tsv, results/retina/reverse/network_final.tsv, results/retina/forward/network_final.tsv, results/retina/reverse/TF_expression.tsv, results/retina/forward/TF_expression.tsv
+    wildcards: celltype=retina
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:52:06 2025]
+Finished jobid: 19 (Rule: post_processing)
+24 of 25 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  8 18:52:06 2025]
+localrule all:
+    input: results/retina/forward/network_final.tsv, results/RPE/forward/network_final.tsv, results/diencephalon/forward/network_final.tsv, results/telencephalon/forward/network_final.tsv, results/stalk/forward/network_final.tsv, results/placode/forward/network_final.tsv, results/retina/reverse/network_final.tsv, results/RPE/reverse/network_final.tsv, results/diencephalon/reverse/network_final.tsv, results/telencephalon/reverse/network_final.tsv, results/stalk/reverse/network_final.tsv, results/placode/reverse/network_final.tsv, results/retina/forward/TF_expression.tsv, results/RPE/forward/TF_expression.tsv, results/diencephalon/forward/TF_expression.tsv, results/telencephalon/forward/TF_expression.tsv, results/stalk/forward/TF_expression.tsv, results/placode/forward/TF_expression.tsv, results/retina/reverse/TF_expression.tsv, results/RPE/reverse/TF_expression.tsv, results/diencephalon/reverse/TF_expression.tsv, results/telencephalon/reverse/TF_expression.tsv, results/stalk/reverse/TF_expression.tsv, results/placode/reverse/TF_expression.tsv, results/retina/network_scored.txt, results/RPE/network_scored.txt, results/diencephalon/network_scored.txt, results/telencephalon/network_scored.txt, results/stalk/network_scored.txt, results/placode/network_scored.txt, results/retina/filtered_network.txt, results/RPE/filtered_network.txt, results/diencephalon/filtered_network.txt, results/telencephalon/filtered_network.txt, results/stalk/filtered_network.txt, results/placode/filtered_network.txt
+    jobid: 0
+    reason: Input files updated by another job: results/diencephalon/network_scored.txt, results/retina/reverse/network_final.tsv, results/telencephalon/forward/network_final.tsv, results/placode/reverse/TF_expression.tsv, results/RPE/network_scored.txt, results/stalk/reverse/TF_expression.tsv, results/diencephalon/reverse/network_final.tsv, results/diencephalon/forward/network_final.tsv, results/retina/filtered_network.txt, results/stalk/reverse/network_final.tsv, results/diencephalon/reverse/TF_expression.tsv, results/stalk/filtered_network.txt, results/RPE/forward/TF_expression.tsv, results/telencephalon/reverse/network_final.tsv, results/RPE/forward/network_final.tsv, results/diencephalon/filtered_network.txt, results/placode/forward/TF_expression.tsv, results/retina/forward/TF_expression.tsv, results/RPE/filtered_network.txt, results/stalk/forward/network_final.tsv, results/placode/forward/network_final.tsv, results/diencephalon/forward/TF_expression.tsv, results/retina/reverse/TF_expression.tsv, results/retina/network_scored.txt, results/telencephalon/reverse/TF_expression.tsv, results/RPE/reverse/network_final.tsv, results/stalk/network_scored.txt, results/placode/network_scored.txt, results/telencephalon/network_scored.txt, results/stalk/forward/TF_expression.tsv, results/placode/filtered_network.txt, results/RPE/reverse/TF_expression.tsv, results/retina/forward/network_final.tsv, results/telencephalon/forward/TF_expression.tsv, results/placode/reverse/network_final.tsv, results/telencephalon/filtered_network.txt
+    resources: tmpdir=/tmp
+[Wed Oct  8 18:52:06 2025]
+Finished jobid: 0 (Rule: all)
+25 of 25 steps (100%) done
+Complete log(s): /data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code_zebra_8_10_2025/.snakemake/log/2025-10-08T184723.329390.snakemake.log

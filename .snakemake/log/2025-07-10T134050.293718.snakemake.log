@@ -1,0 +1,110 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        1
+prepare_data           1
+run_pipeline           2
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Jul 10 13:40:50 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv, results/stalk/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/stalk/docr_sequences_forward_lin.tsv, results/stalk/peaks_within_degs.tsv, results/stalk/positive_genes.tsv, results/stalk/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=stalk
+    resources: tmpdir=/tmp
+[Thu Jul 10 13:40:53 2025]
+Finished jobid: 2 (Rule: prepare_data)
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Thu Jul 10 13:40:53 2025]
+localrule run_pipeline:
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/forward/network_final.tsv, results/stalk/forward/TF_expression.tsv, results/stalk/forward/gene_expression.tsv
+    jobid: 1
+    reason: Missing output files: results/stalk/forward/network_final.tsv, results/stalk/forward/gene_expression.tsv, results/stalk/forward/TF_expression.tsv; Input files updated by another job: results/stalk/docr_sequences_forward_lin.tsv, results/stalk/peaks_within_degs.tsv, results/stalk/positive_genes.tsv
+    wildcards: celltype=stalk, strand=forward
+    resources: tmpdir=/tmp
+[Thu Jul 10 13:40:53 2025]
+localrule run_pipeline:
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/reverse/network_final.tsv, results/stalk/reverse/TF_expression.tsv, results/stalk/reverse/gene_expression.tsv
+    jobid: 3
+    reason: Missing output files: results/stalk/reverse/TF_expression.tsv, results/stalk/reverse/gene_expression.tsv, results/stalk/reverse/network_final.tsv; Input files updated by another job: results/stalk/positive_genes.tsv, results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=stalk, strand=reverse
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code_zebra/Snakefile", line 49:
+Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for stalk strand forward'
+    bash run_motif_pipeline.sh forward stalk reference/orthologs/zebra_mouse.tsv reference/orthologs/zebra_human.tsv' returned non-zero exit status 1.
+[Thu Jul 10 13:41:16 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 1
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/forward/network_final.tsv, results/stalk/forward/TF_expression.tsv, results/stalk/forward/gene_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for stalk strand forward'
+    bash run_motif_pipeline.sh forward stalk reference/orthologs/zebra_mouse.tsv reference/orthologs/zebra_human.tsv
+    
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code_zebra/Snakefile", line 49:
+Command 'set -euo pipefail;  
+    echo 'Running run_pipeline for stalk strand reverse'
+    bash run_motif_pipeline.sh reverse stalk reference/orthologs/zebra_mouse.tsv reference/orthologs/zebra_human.tsv' returned non-zero exit status 1.
+[Thu Jul 10 13:41:16 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 3
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/reverse/network_final.tsv, results/stalk/reverse/TF_expression.tsv, results/stalk/reverse/gene_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for stalk strand reverse'
+    bash run_motif_pipeline.sh reverse stalk reference/orthologs/zebra_mouse.tsv reference/orthologs/zebra_human.tsv
+    
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Thu Jul 10 13:41:16 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 1
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_forward_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/forward/network_final.tsv, results/stalk/forward/TF_expression.tsv, results/stalk/forward/gene_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for stalk strand forward'
+    bash run_motif_pipeline.sh forward stalk reference/orthologs/zebra_mouse.tsv reference/orthologs/zebra_human.tsv
+    
+        (command exited with non-zero exit code)
+[Thu Jul 10 13:41:16 2025]
+Error in rule run_pipeline:
+    message: None
+    jobid: 3
+    input: results/stalk/peaks_within_degs.tsv, results/stalk/docr_sequences_reverse_lin.tsv, results/stalk/positive_genes.tsv, reference/orthologs/zebra_mouse.tsv, reference/orthologs/zebra_human.tsv
+    output: results/stalk/reverse/network_final.tsv, results/stalk/reverse/TF_expression.tsv, results/stalk/reverse/gene_expression.tsv
+    shell:
+        
+    echo 'Running run_pipeline for stalk strand reverse'
+    bash run_motif_pipeline.sh reverse stalk reference/orthologs/zebra_mouse.tsv reference/orthologs/zebra_human.tsv
+    
+        (command exited with non-zero exit code)
+Complete log(s): /data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code_zebra/.snakemake/log/2025-07-10T134050.293718.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

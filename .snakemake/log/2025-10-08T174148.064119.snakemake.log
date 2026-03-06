@@ -1,0 +1,36 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        1
+prepare_data           1
+run_pipeline           2
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  8 17:41:48 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/optic stalk/peaks_within_degs.tsv, results/optic stalk/docr_sequences_forward_lin.tsv, results/optic stalk/docr_sequences_reverse_lin.tsv, results/optic stalk/positive_genes.tsv, results/optic stalk/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/optic stalk/docr_sequences_forward_lin.tsv, results/optic stalk/docr_sequences_reverse_lin.tsv, results/optic stalk/positive_genes.tsv, results/optic stalk/peaks_within_degs.tsv
+    wildcards: celltype=optic stalk
+    resources: tmpdir=/tmp
+Waiting at most 5 seconds for missing files:
+results/optic stalk/peaks_within_degs.tsv (missing locally)
+results/optic stalk/docr_sequences_forward_lin.tsv (missing locally)
+results/optic stalk/docr_sequences_reverse_lin.tsv (missing locally)
+results/optic stalk/positive_genes.tsv (missing locally)
+results/optic stalk/negative_genes.tsv (missing locally)
+Terminating processes on user request, this might take some time.
+Complete log(s): /data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code_zebra_8_10_2025/.snakemake/log/2025-10-08T174148.064119.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

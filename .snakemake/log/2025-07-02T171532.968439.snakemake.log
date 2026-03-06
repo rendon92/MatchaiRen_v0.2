@@ -1,0 +1,6 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+MissingRuleException:
+No rule to produce nombre_de_la_regla_que_corresponda (if you use input functions make sure that they don't raise unexpected exceptions).

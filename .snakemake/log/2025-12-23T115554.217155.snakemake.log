@@ -1,0 +1,38 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 5
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        1
+prepare_data           1
+run_pipeline           2
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec 23 11:55:54 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/docr_sequences_forward_lin.tsv
+    wildcards: celltype=RPE
+    resources: tmpdir=/tmp
+[Tue Dec 23 11:55:58 2025]
+Finished jobid: 2 (Rule: prepare_data)
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 2 jobs...
+RuleException in rule run_pipeline in file "/data/scMultiome/paper/files/github_code_paper_10_12_2025/matchairen/Snakefile", line 36:
+AttributeError: 'OutputFiles' object has no attribute 'tmpdir', when formatting the following:
+
+    mkdir -p {output.tmpdir}
+    echo 'Running run_pipeline for {wildcards.celltype} strand {wildcards.strand}'
+    bash run_motif_pipeline.sh {wildcards.strand} {wildcards.celltype} {input.orth_mouse} {input.orth_human}
+   

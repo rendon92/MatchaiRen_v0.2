@@ -1,0 +1,10 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+MissingInputException in rule calculate_degrees in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 75:
+Missing input files for rule calculate_degrees:
+    output: results/Monocyte/combined/degrees_reformatted.txt
+    wildcards: celltype=Monocyte
+    affected files:
+        results/Monocyte/combined/network_final

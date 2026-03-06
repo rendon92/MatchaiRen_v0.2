@@ -1,0 +1,11 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+MissingInputException in rule post_processing in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 53:
+Missing input files for rule post_processing:
+    output: results/Monocyte/network_scored.txt, results/Monocyte/filtered_network.txt
+    wildcards: celltype=Monocyte
+    affected files:
+        results/Monocyte/network_final.tsv
+        results/Monocyte/expression.tsv

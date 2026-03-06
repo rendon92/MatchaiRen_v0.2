@@ -1,0 +1,78 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        1
+prepare_data           1
+run_pipeline           2
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Jul 10 10:38:48 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Homo_sapiens.gtf, reference/orthologs/human_human.tsv, reference/orthologs/human_mouse.tsv, reference/genomes/Homo_sapiens.fa
+    output: results/Plasmacytoid/peaks_within_degs.tsv, results/Plasmacytoid/docr_sequences_forward_lin.tsv, results/Plasmacytoid/docr_sequences_reverse_lin.tsv, results/Plasmacytoid/positive_genes.tsv, results/Plasmacytoid/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/Plasmacytoid/peaks_within_degs.tsv, results/Plasmacytoid/docr_sequences_forward_lin.tsv, results/Plasmacytoid/docr_sequences_reverse_lin.tsv, results/Plasmacytoid/positive_genes.tsv
+    wildcards: celltype=Plasmacytoid
+    resources: tmpdir=/tmp
+[Thu Jul 10 10:39:21 2025]
+Finished jobid: 2 (Rule: prepare_data)
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Thu Jul 10 10:39:21 2025]
+localrule run_pipeline:
+    input: results/Plasmacytoid/peaks_within_degs.tsv, results/Plasmacytoid/docr_sequences_forward_lin.tsv, results/Plasmacytoid/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Plasmacytoid/forward/network_final.tsv, results/Plasmacytoid/forward/TF_expression.tsv, results/Plasmacytoid/forward/gene_expression.tsv
+    jobid: 1
+    reason: Missing output files: results/Plasmacytoid/forward/TF_expression.tsv, results/Plasmacytoid/forward/network_final.tsv, results/Plasmacytoid/forward/gene_expression.tsv; Input files updated by another job: results/Plasmacytoid/docr_sequences_forward_lin.tsv, results/Plasmacytoid/positive_genes.tsv, results/Plasmacytoid/peaks_within_degs.tsv
+    wildcards: celltype=Plasmacytoid, strand=forward
+    resources: tmpdir=/tmp
+[Thu Jul 10 10:39:21 2025]
+localrule run_pipeline:
+    input: results/Plasmacytoid/peaks_within_degs.tsv, results/Plasmacytoid/docr_sequences_reverse_lin.tsv, results/Plasmacytoid/positive_genes.tsv, reference/orthologs/human_mouse.tsv, reference/orthologs/human_human.tsv
+    output: results/Plasmacytoid/reverse/network_final.tsv, results/Plasmacytoid/reverse/TF_expression.tsv, results/Plasmacytoid/reverse/gene_expression.tsv
+    jobid: 3
+    reason: Missing output files: results/Plasmacytoid/reverse/TF_expression.tsv, results/Plasmacytoid/reverse/network_final.tsv, results/Plasmacytoid/reverse/gene_expression.tsv; Input files updated by another job: results/Plasmacytoid/positive_genes.tsv, results/Plasmacytoid/docr_sequences_reverse_lin.tsv, results/Plasmacytoid/peaks_within_degs.tsv
+    wildcards: celltype=Plasmacytoid, strand=reverse
+    resources: tmpdir=/tmp
+[Thu Jul 10 10:40:49 2025]
+Finished jobid: 1 (Rule: run_pipeline)
+2 of 5 steps (40%) done
+[Thu Jul 10 10:40:49 2025]
+Finished jobid: 3 (Rule: run_pipeline)
+3 of 5 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Jul 10 10:40:49 2025]
+localrule post_processing:
+    input: results/Plasmacytoid/forward/network_final.tsv, results/Plasmacytoid/reverse/network_final.tsv, results/Plasmacytoid/forward/gene_expression.tsv, results/Plasmacytoid/reverse/gene_expression.tsv, results/Plasmacytoid/forward/TF_expression.tsv, results/Plasmacytoid/reverse/TF_expression.tsv
+    output: results/Plasmacytoid/network_scored.txt, results/Plasmacytoid/filtered_network.txt
+    jobid: 4
+    reason: Missing output files: results/Plasmacytoid/filtered_network.txt, results/Plasmacytoid/network_scored.txt; Input files updated by another job: results/Plasmacytoid/forward/TF_expression.tsv, results/Plasmacytoid/reverse/gene_expression.tsv, results/Plasmacytoid/reverse/TF_expression.tsv, results/Plasmacytoid/reverse/network_final.tsv, results/Plasmacytoid/forward/network_final.tsv, results/Plasmacytoid/forward/gene_expression.tsv
+    wildcards: celltype=Plasmacytoid
+    resources: tmpdir=/tmp
+[Thu Jul 10 10:40:49 2025]
+Finished jobid: 4 (Rule: post_processing)
+4 of 5 steps (80%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Jul 10 10:40:49 2025]
+localrule all:
+    input: results/Plasmacytoid/forward/network_final.tsv, results/Plasmacytoid/reverse/network_final.tsv, results/Plasmacytoid/forward/TF_expression.tsv, results/Plasmacytoid/reverse/TF_expression.tsv, results/Plasmacytoid/network_scored.txt, results/Plasmacytoid/filtered_network.txt
+    jobid: 0
+    reason: Input files updated by another job: results/Plasmacytoid/reverse/TF_expression.tsv, results/Plasmacytoid/filtered_network.txt, results/Plasmacytoid/forward/network_final.tsv, results/Plasmacytoid/forward/TF_expression.tsv, results/Plasmacytoid/network_scored.txt, results/Plasmacytoid/reverse/network_final.tsv
+    resources: tmpdir=/tmp
+[Thu Jul 10 10:40:49 2025]
+Finished jobid: 0 (Rule: all)
+5 of 5 steps (100%) done
+Complete log(s): /data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/.snakemake/log/2025-07-10T103848.542023.snakemake.log

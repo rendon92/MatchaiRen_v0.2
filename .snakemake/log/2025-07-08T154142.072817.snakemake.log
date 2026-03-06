@@ -1,0 +1,12 @@
+Building DAG of jobs...
+MissingInputException in rule merge_strands in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 52:
+Missing input files for rule merge_strands:
+    output: results/Monocyte/combined/network_final, results/Monocyte/combined/gene_expression, results/Monocyte/combined/TF_expression, results/Monocyte/combined/expression
+    wildcards: celltype=Monocyte
+    affected files:
+        results/Monocyte/forward/TF_expression
+        results/Monocyte/reverse/network_final
+        results/Monocyte/forward/gene_expression
+        results/Monocyte/reverse/TF_expression
+        results/Monocyte/forward/network_final
+        results/Monocyte/reverse/gene_expression

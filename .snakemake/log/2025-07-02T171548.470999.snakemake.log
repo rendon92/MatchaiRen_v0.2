@@ -1,0 +1,6 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+MissingRuleException:
+No rule to produce run_motif_pipeline.sh (if you use input functions make sure that they don't raise unexpected exceptions).

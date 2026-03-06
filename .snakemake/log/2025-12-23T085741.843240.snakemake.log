@@ -1,0 +1,47 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 5
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+post_processing        1
+prepare_data           1
+run_pipeline           2
+total                  5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec 23 08:57:41 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/docr_sequences_reverse_lin.tsv
+    wildcards: celltype=RPE
+    resources: tmpdir=/tmp
+Terminating processes on user request, this might take some time.
+RuleException:
+CalledProcessError in file "/data/scMultiome/paper/files/github_code_paper_10_12_2025/matchairen/Snakefile", line 32:
+Command 'set -euo pipefail;  
+    echo 'Running prepare_data for RPE'
+    bash prepare_data.bash data/degs/all_degs.tsv data/docrs/all_docrs.tsv RPE Danio_rerio reference/orthologs/zebra_human.tsv reference/orthologs/zebra_mouse.tsv reference/genomes/Danio_rerio.fa reference/annotations/Danio_rerio.gtf' died with <Signals.SIGINT: 2>.
+[Tue Dec 23 08:57:43 2025]
+Error in rule prepare_data:
+    message: None
+    jobid: 2
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Danio_rerio.gtf, reference/orthologs/zebra_human.tsv, reference/orthologs/zebra_mouse.tsv, reference/genomes/Danio_rerio.fa
+    output: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/negative_genes.tsv
+    shell:
+        
+    echo 'Running prepare_data for RPE'
+    bash prepare_data.bash data/degs/all_degs.tsv data/docrs/all_docrs.tsv RPE Danio_rerio reference/orthologs/zebra_human.tsv reference/orthologs/zebra_mouse.tsv reference/genomes/Danio_rerio.fa reference/annotations/Danio_rerio.gtf
+    
+        (command exited with non-zero exit code)
+Complete log(s): /data/scMultiome/paper/files/github_code_paper_10_12_2025/matchairen/.snakemake/log/2025-12-23T085741.843240.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,0 +1,16 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+WorkflowError:
+MissingInputException: Missing input files for rule run_pipeline:
+    output: results/Monocyte/combined/network_final.tsv, results/Monocyte/combined/TF_expression.tsv
+    wildcards: celltype=Monocyte, strand=combined
+    affected files:
+        results/Monocyte/docr_sequences_combined_lin.tsv
+MissingInputException: Missing input files for rule merge_strands:
+    output: results/Monocyte/combined/network_final.tsv, results/Monocyte/combined/gene_expression, results/Monocyte/combined/TF_expression.tsv, results/Monocyte/combined/expression.tsv
+    wildcards: celltype=Monocyte
+    affected files:
+        results/Monocyte/forward/gene_expression
+        results/Monocyte/reverse/gene_expression

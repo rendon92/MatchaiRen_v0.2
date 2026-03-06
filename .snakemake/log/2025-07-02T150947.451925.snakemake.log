@@ -1,0 +1,46 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+prepare_data        1
+run_pipeline        2
+total               4
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul  2 15:09:47 2025]
+localrule prepare_data:
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Homo_sapiens.gtf, reference/orthologs/human_human.tsv, reference/orthologs/human_mouse.tsv, reference/genomes/Homo_sapiens.fa
+    output: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/negative_genes.tsv
+    jobid: 2
+    reason: Missing output files: results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/peaks_within_degs.tsv; Code has changed since last execution
+    wildcards: celltype=Monocyte
+    resources: tmpdir=/tmp
+Terminating processes on user request, this might take some time.
+RuleException:
+CalledProcessError in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/Snakefile", line 31:
+Command 'set -euo pipefail;  
+    echo 'Running prepare_data for Monocyte'
+    bash prepare_data.bash data/degs/all_degs.tsv data/docrs/all_docrs.tsv Monocyte Homo_sapiens reference/orthologs/human_human.tsv reference/orthologs/human_mouse.tsv reference/genomes/Homo_sapiens.fa reference/annotations/Homo_sapiens.gtf' died with <Signals.SIGINT: 2>.
+[Wed Jul  2 15:09:50 2025]
+Error in rule prepare_data:
+    message: None
+    jobid: 2
+    input: data/degs/all_degs.tsv, data/docrs/all_docrs.tsv, reference/annotations/Homo_sapiens.gtf, reference/orthologs/human_human.tsv, reference/orthologs/human_mouse.tsv, reference/genomes/Homo_sapiens.fa
+    output: results/Monocyte/peaks_within_degs.tsv, results/Monocyte/docr_sequences_forward_lin.tsv, results/Monocyte/docr_sequences_reverse_lin.tsv, results/Monocyte/positive_genes.tsv, results/Monocyte/negative_genes.tsv
+    shell:
+        
+    echo 'Running prepare_data for Monocyte'
+    bash prepare_data.bash data/degs/all_degs.tsv data/docrs/all_docrs.tsv Monocyte Homo_sapiens reference/orthologs/human_human.tsv reference/orthologs/human_mouse.tsv reference/genomes/Homo_sapiens.fa reference/annotations/Homo_sapiens.gtf
+    
+        (command exited with non-zero exit code)
+Complete log(s): /data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code/.snakemake/log/2025-07-02T150947.451925.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

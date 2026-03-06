@@ -1,0 +1,11 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+MissingInputException in rule prepare_data in file "/data/scMultiome/paper/GRNs_paper/multiome_no_doublets/github_code_zebra/Snakefile", line 17:
+Missing input files for rule prepare_data:
+    output: results/RPE/peaks_within_degs.tsv, results/RPE/docr_sequences_forward_lin.tsv, results/RPE/docr_sequences_reverse_lin.tsv, results/RPE/positive_genes.tsv, results/RPE/negative_genes.tsv
+    wildcards: celltype=RPE
+    affected files:
+        reference/orthologs/zebrafish_mouse.tsv
+        reference/orthologs/zebrafish_human.tsv

@@ -1,0 +1,24 @@
+name: GRN_software
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - mamba
+  - pyfaidx
+  - ca-certificates
+  - certifi
+  - openssl
+  - pandas
+  - mkl-service
+  - pyjaspar
+  - muscle=3.8
+  - ucsc-bedgraphtobigwig
+  - ucsc-bedclip
+  - matplotlib=3.7.1
+  - cellrank
+  - bioconda::kipoi
+  - snakemake
+  - r-base
+  - r-essentials
+  - r-tidyverse 

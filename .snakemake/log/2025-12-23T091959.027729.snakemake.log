@@ -1,0 +1,8 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: javi-MS-7C81
+Building DAG of jobs...
+MissingInputException in rule all in file "/data/scMultiome/paper/files/github_code_paper_10_12_2025/matchairen/Snakefile", line 10:
+Missing input files for rule all:
+    affected files:
+        results/RPE/filtered_network.txt
